@@ -8,6 +8,7 @@ services:
         class: Btn\DealBundle\Model\DealManager
         arguments:
             em:            '@doctrine.orm.entity_manager'
+            twig:          null
             pdf:           '@btn.pdf_manager'
             kernelRootDir: %kernel.root_dir%
             paginator:     '@knp_paginator'
