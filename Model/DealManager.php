@@ -22,13 +22,6 @@ class DealManager extends Manager
      */
     protected $templateName = 'BtnDealBundle:Default:invoice.html.twig';
 
-    /**
-     * EntityManager.
-     *
-     * @var Doctrine\ORM\EntityManager
-     */
-    public $em;
-
      /**
      * Deal.
      *
@@ -69,12 +62,10 @@ class DealManager extends Manager
      * Constructor.
      *
      */
-    public function __construct(EntityManager $em, \Twig_Environment $twig, PdfManager $pdf, $kernelRootDir, Paginator $paginator, $formFactory, $seller)
+    public function __construct(EntityManager $em, \Twig_Environment $twig = null, PdfManager $pdf, $kernelRootDir, Paginator $paginator, $formFactory, $seller)
     {
         parent::__construct($em, $paginator, $twig, $formFactory);
 
-        $this->em            = $em;
-        $this->twig          = $twig;
         $this->deal          = new Deal();
         $this->pdf           = $pdf;
         $this->kernelRootDir = $kernelRootDir;
