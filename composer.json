@@ -17,7 +17,7 @@
         "php": ">=5.3.3",
         "symfony/symfony": "2.*",
         "bitnoise/base-bundle": "dev-sf23",
-        "ensepar/tcpdf": "dev-master",
+        "ensepar/tcpdf": "dev-master"
     },
     "repositories": [
         {
