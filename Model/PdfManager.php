@@ -2,7 +2,6 @@
 
 namespace Btn\DealBundle\Model;
 
-use Symfony\Component\HttpFoundation\Response;
 use TCPDF;
 
 /**
@@ -17,16 +16,6 @@ class PdfManager extends TCPDF
     private $path;
 
     /**
-     * @var string Author of pdf
-     */
-    private $author = 'Btn';
-
-    /**
-     * @var Title of pdf
-     */
-    private $title = '';
-
-    /**
      * Constructor.
      *
      */
@@ -36,22 +25,6 @@ class PdfManager extends TCPDF
         $this->path   = $webRoot.'/tcpdf/';
     }
 
-    /**
-     *
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     *
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
     /*
      * Set PDF page parameters
      */
@@ -59,8 +32,8 @@ class PdfManager extends TCPDF
     {
         // set document information
         $this->SetCreator(PDF_CREATOR);
-        $this->SetAuthor($this->author);
-        $this->SetTitle($this->title);
+        // $this->SetAuthor($this->author);
+        // $this->SetTitle($this->title);
 
         //disable header and footer
         $this->setPrintHeader(false);
@@ -103,6 +76,7 @@ class PdfManager extends TCPDF
         $filename .= '.pdf';
 
         $this->Output($destination . $filename, 'F');
+
         return $filename;
     }
 }

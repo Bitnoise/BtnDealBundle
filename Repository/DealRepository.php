@@ -3,8 +3,6 @@
 namespace Btn\DealBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query\ResultSetMapping;
-use Doctrine\ORM\EntityManager;
 
 /**
  * DealRepository

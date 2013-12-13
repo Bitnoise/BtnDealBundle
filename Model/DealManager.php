@@ -4,9 +4,8 @@ namespace Btn\DealBundle\Model;
 
 use Btn\DealBundle\Entity\Deal;
 use Btn\DealBundle\Entity\DealItem;
-use Btn\AppBundle\Util\ArrayEntity;
 use Doctrine\ORM\EntityManager;
-use Btn\AppBundle\Model\Manager;
+use Btn\BaseBundle\Model\Manager;
 use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -57,7 +56,6 @@ class DealManager extends Manager
      * @var root dir
      */
     protected $kernelRootDir;
-
 
     /**
      *  user fields
@@ -131,9 +129,9 @@ class DealManager extends Manager
     public function getParam($field)
     {
         $func = 'get' . ucfirst($field);
+
         return $this->deal->$func();
     }
-
 
     /**
      * set $countItems and $quantityItems
@@ -165,7 +163,6 @@ class DealManager extends Manager
         return $this->deal->getItems();
     }
 
-
     /**
      * convert object to array from param fields
      *
@@ -178,7 +175,6 @@ class DealManager extends Manager
     {
         //if $object is array return
         if (is_array($object)) {
-
             return $object;
         }
         $arr = array();
@@ -189,7 +185,7 @@ class DealManager extends Manager
             $func = 'get'.ucfirst($field);
             $arr[$field] = $object->$func();
 
-            if ($arr[$field] instanceof \DateTime ) {
+            if ($arr[$field] instanceof \DateTime) {
                 $arr[$field] = $arr[$field]->format('Y-m-d');
             }
         }//foreach
@@ -212,7 +208,7 @@ class DealManager extends Manager
     /**
      * Set deal
      *
-     * @param Btn\DealBundle\Entity\Deal $deal
+     * @param  Btn\DealBundle\Entity\Deal $deal
      * @return void
      */
     public function setDeal(\Btn\DealBundle\Entity\Deal $deal = null)
@@ -253,7 +249,6 @@ class DealManager extends Manager
 
             return true;
         } else {
-
             return false;
         }
     }
@@ -305,7 +300,6 @@ class DealManager extends Manager
 
         if ($lastItem) {
             if (date('Y', time()) == $lastItem->getYear() && date('m', time()) == $lastItem->getMonth()) {
-
                 return $lastItem->getNumber() + 1;
             }
         }
@@ -316,7 +310,7 @@ class DealManager extends Manager
     /**
      * find by array and return deal
      *
-     * @param array $arr
+     * @param  array $arr
      * @return Deal
      * @author
      **/
@@ -330,7 +324,7 @@ class DealManager extends Manager
     /**
      * find by array and return deals, this function don't set sefl::$deal
      *
-     * @param array $arr
+     * @param  array      $arr
      * @return Collection of Deals
      * @author
      **/
@@ -465,8 +459,8 @@ class DealManager extends Manager
     /**
      * return pdf filename
      *
-     * @param boolean $force for generate new pdf always
-     * @return string (filename)
+     * @param  boolean $force for generate new pdf always
+     * @return string  (filename)
      * @author
      **/
     private function getPdf($force = false)

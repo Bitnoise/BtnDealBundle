@@ -153,12 +153,13 @@ class Deal
     /**
      * Set buyer
      *
-     * @param text $buyer
+     * @param  text    $buyer
      * @return Invoice
      */
     public function setBuyer($buyer)
     {
         $this->buyer = json_encode($buyer);
+
         return $this;
     }
 
@@ -175,12 +176,13 @@ class Deal
     /**
      * Set seller
      *
-     * @param text $seller
+     * @param  text    $seller
      * @return Invoice
      */
     public function setSeller($seller)
     {
         $this->seller = json_encode($seller);
+
         return $this;
     }
 
@@ -197,12 +199,13 @@ class Deal
     /**
      * Set netto
      *
-     * @param decimal $netto
+     * @param  decimal $netto
      * @return Invoice
      */
     public function setNetto($netto)
     {
         $this->netto = $netto;
+
         return $this;
     }
 
@@ -219,12 +222,13 @@ class Deal
     /**
      * Set gross
      *
-     * @param decimal $gross
+     * @param  decimal $gross
      * @return Invoice
      */
     public function setGross($gross)
     {
         $this->gross = $gross;
+
         return $this;
     }
 
@@ -241,12 +245,13 @@ class Deal
     /**
      * Set tax_value
      *
-     * @param decimal $taxValue
+     * @param  decimal $taxValue
      * @return Invoice
      */
     public function setTaxValue($taxValue)
     {
         $this->taxValue = $taxValue;
+
         return $this;
     }
 
@@ -263,12 +268,13 @@ class Deal
     /**
      * Set number
      *
-     * @param integer $number
+     * @param  integer $number
      * @return Invoice
      */
     public function setNumber($number)
     {
         $this->number = $number;
+
         return $this;
     }
 
@@ -285,12 +291,13 @@ class Deal
     /**
      * Set created_at
      *
-     * @param datetime $createdAt
+     * @param  datetime $createdAt
      * @return Invoice
      */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 
@@ -307,12 +314,13 @@ class Deal
     /**
      * Add items
      *
-     * @param Btn\DealBundle\Entity\DealItem $items
+     * @param  Btn\DealBundle\Entity\DealItem $items
      * @return Invoice
      */
     public function addItem(\Btn\DealBundle\Entity\DealItem $items)
     {
         $this->items[] = $items;
+
         return $this;
     }
 
@@ -360,12 +368,13 @@ class Deal
     /**
      * Set file
      *
-     * @param string $file
+     * @param  string  $file
      * @return Invoice
      */
     public function setFile($file)
     {
         $this->file = $file;
+
         return $this;
     }
 
@@ -409,12 +418,13 @@ class Deal
     /**
      * Set ownerId
      *
-     * @param integer $ownerId
+     * @param  integer $ownerId
      * @return Invoice
      */
     public function setOwnerId($ownerId)
     {
         $this->ownerId = $ownerId;
+
         return $this;
     }
 
@@ -431,12 +441,13 @@ class Deal
     /**
      * Set dueDate
      *
-     * @param datetime $dueDate
+     * @param  datetime $dueDate
      * @return Invoice
      */
     public function setDueDate($dueDate)
     {
         $this->dueDate = $dueDate;
+
         return $this;
     }
 
@@ -501,12 +512,13 @@ class Deal
     /**
      * Set issueDate
      *
-     * @param datetime $issueDate
+     * @param  datetime $issueDate
      * @return Invoice
      */
     public function setIssueDate($issueDate)
     {
         $this->issueDate = $issueDate;
+
         return $this;
     }
 
@@ -535,7 +547,7 @@ class Deal
     /**
      * Set dealNb
      *
-     * @param string $dealNb
+     * @param  string $dealNb
      * @return Deal
      */
     public function setDealNb($dealNb)
@@ -558,7 +570,7 @@ class Deal
     /**
      * Set options
      *
-     * @param string $options
+     * @param  string $options
      * @return Deal
      */
     public function setOptions($options)
@@ -581,7 +593,7 @@ class Deal
     /**
      * Set type
      *
-     * @param integer $type
+     * @param  integer $type
      * @return Deal
      */
     public function setType($type)
@@ -604,7 +616,7 @@ class Deal
     /**
      * Set status
      *
-     * @param integer $status
+     * @param  integer $status
      * @return Deal
      */
     public function setStatus($status)

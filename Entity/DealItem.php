@@ -104,12 +104,13 @@ class DealItem
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string      $name
      * @return InvoiceItem
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -126,12 +127,13 @@ class DealItem
     /**
      * Set quantity
      *
-     * @param integer $quantity
+     * @param  integer     $quantity
      * @return InvoiceItem
      */
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
         return $this;
     }
 
@@ -148,7 +150,7 @@ class DealItem
     /**
      * Set netto
      *
-     * @param decimal $netto
+     * @param  decimal     $netto
      * @return InvoiceItem
      */
     public function setNetto($netto)
@@ -156,7 +158,7 @@ class DealItem
         $this->netto = $netto;
 
         //if haven't tax set defaults
-        if ($this->getTax() === null)  {
+        if ($this->getTax() === null) {
             $this->tax      = 0;
             $this->taxValue = 0;
             $this->gross    = $netto;
@@ -211,7 +213,6 @@ class DealItem
     public function calculateTaxValue()
     {
         if ($this->getTax()) {
-
             return $this->netto * ($this->getTax() / 100);
         }
 
@@ -221,7 +222,7 @@ class DealItem
     /**
      * Set gross
      *
-     * @param decimal $gross
+     * @param  decimal     $gross
      * @return InvoiceItem
      */
     public function setGross($gross)
@@ -229,7 +230,7 @@ class DealItem
         $this->gross = $gross;
 
         //if haven't tax set defaults
-        if ($this->getTax() === null)  {
+        if ($this->getTax() === null) {
             $this->tax      = 0;
             $this->taxValue = 0;
             $this->netto    = $gross;
@@ -256,7 +257,7 @@ class DealItem
     /**
      * Set tax
      *
-     * @param integer $tax
+     * @param  integer     $tax
      * @return InvoiceItem
      */
     public function setTax($tax)
@@ -264,7 +265,7 @@ class DealItem
         $this->tax = $tax;
 
         //if havent gross and havent netto set defaults
-        if ($this->getGross() === null && $this->getNetto() === null)  {
+        if ($this->getGross() === null && $this->getNetto() === null) {
             $this->gross = 0;
             $this->netto = 0;
 
@@ -296,12 +297,13 @@ class DealItem
     /**
      * Set tax_value
      *
-     * @param decimal $taxValue
+     * @param  decimal     $taxValue
      * @return InvoiceItem
      */
     public function setTaxValue($taxValue)
     {
         $this->taxValue = $taxValue;
+
         return $this;
     }
 
@@ -318,12 +320,13 @@ class DealItem
     /**
      * Set sku
      *
-     * @param string $sku
+     * @param  string      $sku
      * @return InvoiceItem
      */
     public function setSku($sku)
     {
         $this->sku = $sku;
+
         return $this;
     }
 
@@ -340,12 +343,13 @@ class DealItem
     /**
      * Set deal
      *
-     * @param Btn\DealBundle\Entity\Deal $deal
+     * @param  Btn\DealBundle\Entity\Deal $deal
      * @return Deal
      */
     public function setDeal(\Btn\DealBundle\Entity\Deal $deal = null)
     {
         $this->deal = $deal;
+
         return $this;
     }
 
@@ -362,7 +366,7 @@ class DealItem
     /**
      * Set options
      *
-     * @param string $options
+     * @param  string $options
      * @return Deal
      */
     public function setOptions($options)
@@ -385,7 +389,7 @@ class DealItem
     /**
      * Set type
      *
-     * @param integer $type
+     * @param  integer  $type
      * @return DealItem
      */
     public function setType($type)
