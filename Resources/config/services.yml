@@ -6,13 +6,11 @@ services:
 
     btn.deal_manager:
         class: Btn\DealBundle\Model\DealManager
-        scope: request
         arguments:
             em:            '@doctrine.orm.entity_manager'
             twig:          '@twig'
             pdf:           '@btn.pdf_manager'
             kernelRootDir: %kernel.root_dir%
             paginator:     '@knp_paginator'
-            request:       '@request'
             formFactory:   '@form.factory'
             seller:        %deal.seller%

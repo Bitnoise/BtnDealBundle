@@ -69,10 +69,9 @@ class DealManager extends Manager
      * Constructor.
      *
      */
-    public function __construct(EntityManager $em, \Twig_Environment $twig, PdfManager $pdf, $kernelRootDir, Paginator $paginator, Request $request, $formFactory, $seller)
+    public function __construct(EntityManager $em, \Twig_Environment $twig, PdfManager $pdf, $kernelRootDir, Paginator $paginator, $formFactory, $seller)
     {
         parent::__construct($em, $paginator, $twig, $formFactory);
-        parent::setRequest($request);
 
         $this->em            = $em;
         $this->twig          = $twig;
