@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <table style="height:80%">
+        <tr>
+            <td colspan="3"><b style="font-size:50px; font-weight: bold;">Faktura proforma nr: {{ deal.number }}</b><br /><br />
+                Wystawiona w dniu: {{ date.issueDate|date('d-m-Y') }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><br /><br /><br /></td>
+        </tr>
+        <tr>
+            <td style="width:40%; border:1 #000 solid">
+                <b>Sprzedawca</b><br/><br/>
+                {{ seller.company }} <br />
+                {{ seller.street }} {{ seller.postCode }} {{ seller.city }} <br />
+                {{ seller.nip }} <br />
+                {{ seller.phone }} <br />
+                {{ seller.eMail }} {{ seller.website }}
+            </td>
+            <td style="width:20%">&nbsp;</td>
+            <td style="width:40%; border:1 #000 solid">
+                <b>Nabywca</b><br/><br/>
+                {{ buyer.company }} <br />
+                {{ buyer.street }} {{ buyer.postCode }} {{ buyer.city }} <br />
+                {{ buyer.nip }} <br />
+                {{ buyer.phone }} <br />
+                {{ buyer.eMail }} {{ buyer.website }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><br /><br /><br /><br /></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table cellpadding="3">
+                    <tr>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:5% ">Lp.</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:25% ">Nazwa towaru lub usługi</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:5% ">Jm</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:7% ">Ilość</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:13% ">Cena jedn.<br />bez podatku</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:13% ">Wartość bez<br />podatku</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:5% ">VAT %</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:13% ">Kwota VAT</th>
+                        <th style="background-color: #EAEAEA; text-align:center; font-weight: bold; border: 1px solid #000; width:13% ">Wartość z<br />podat. VAT</th>
+                    </tr>
+                    {% for item in deal.items %}
+                        <tr>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ loop.index }}   </td>
+                            <td style="text-align:left; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ item.name }}</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">szt.</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ item.quantity }}</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ item.netto|number_format(2, ',', ' ') }} zł</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ (item.netto * item.quantity)|number_format(2, ',', ' ') }} zł</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ item.tax }}%</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ">{{ (item.taxValue * item.quantity)|number_format(2, ',', ' ') }} zł</td>
+                            <td style="text-align:right; border-left: 1px solid #000;{% if loop.last %}border-bottom: 1px solid #000{% endif %} ; border-right: 1px solid #000">{{ (item.gross * item.quantity)|number_format(2, ',', ' ') }} zł</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                    <td colspan="9"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align:right"><b>Razem:</b></td>
+                        <td style="text-align:right; border: 1px solid #000">{{ deal.netto|number_format(2, ',', ' ') }} zł</td>
+                        <td></td>
+                        <td style="text-align:right; border: 1px solid #000">{{ deal.taxValue|number_format(2, ',', ' ') }} zł</td>
+                        <td style="text-align:right; border: 1px solid #000">{{ deal.gross|number_format(2, ',', ' ') }} zł</td>
+                    </tr>
+                </table>
+
+
+            </td>
+        </tr>
+    </table>
+    <br /><br /><br /><br /><br /><br /><br />
+    <table cellpadding="3">
+        <tr>
+            <td style="width:35%; border-top: 1px solid #000; text-align:center">podpis osoby upoważnionej do odbioru faktury</td>
+            <td style="width:25%"></td>
+            <td style="width:40%; border-top: 1px solid #000; text-align:center">podpis osoby upoważnionej do wystawienia faktury</td>
+        </tr>
+    </table>
+</body>
+</html>

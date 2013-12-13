@@ -1,0 +1,32 @@
+{
+    "name": "bitnoise/deal-bundle",
+    "type": "symfony-bundle",
+    "description": "",
+    "keywords": [ "bitnoise", "deal"],
+    "homepage": "https://github.com/Bitnoise/BtnDealBundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Bitnoise Team",
+            "homepage": "http://www.bitnoi.se/",
+            "email": "labs@bitnoi.se"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.*",
+        "bitnoise/base-bundle": "dev-sf23",
+        "ensepar/tcpdf": "dev-master",
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/Bitnoise/BtnBaseBundle.git"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Btn\\DealBundle": "" }
+    },
+    "target-dir": "Btn/DealBundle"
+}
