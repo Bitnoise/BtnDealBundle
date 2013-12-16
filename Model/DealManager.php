@@ -256,16 +256,16 @@ class DealManager extends Manager
         //get entity manager
         $em = $this->em;
 
-        //always before update in database regenerate pdf with $force is true
-
-        //set new filename
-        $this->getDeal()->setFile($this->getPdf(true));
-
         //if havent number, check the last and add +1
         if ($this->deal->getNumber() == null) {
 
             $this->deal->setNumber($this->generateNumber());
         }
+
+        //always before update in database regenerate pdf with $force is true
+
+        //set new filename
+        $this->getDeal()->setFile($this->getPdf(true));
 
         //persist deal and items
         $em->persist($this->deal);
