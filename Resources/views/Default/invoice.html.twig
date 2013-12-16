@@ -5,7 +5,7 @@
 <body>
     <table style="height:80%">
         <tr>
-            <td colspan="3"><b style="font-size:50px; font-weight: bold;">Faktura proforma nr: {{ deal.number }}</b><br /><br />
+            <td colspan="3"><b style="font-size:40px; font-weight: bold;">Faktura proforma nr: {{ deal.number }}</b><br /><br />
                 Wystawiona w dniu: {{ date.issueDate|date('d-m-Y') }}
             </td>
         </tr>
@@ -15,20 +15,44 @@
         <tr>
             <td style="width:40%; border:1 #000 solid">
                 <b>Sprzedawca</b><br/><br/>
-                {{ seller.company }} <br />
-                {{ seller.street }} {{ seller.postCode }} {{ seller.city }} <br />
-                {{ seller.nip }} <br />
-                {{ seller.phone }} <br />
-                {{ seller.eMail }} {{ seller.website }}
+                {% if seller.company %}
+                    {{ seller.company }} <br />
+                {% endif %}
+                {% if seller.street or seller.postCode or seller.city %}
+                    {{ seller.street }} {{ seller.postCode }} {{ seller.city }} <br />
+                {% elseif seller.adress %}
+                    {{ seller.adress }}<br />
+                {% endif %}
+                {% if seller.nip %}
+                    {{ seller.nip }} <br />
+                {% endif %}
+                {% if seller.phone %}
+                    {{ seller.phone }} <br />
+                {% endif %}
+                {% if seller.eMail or seller.website %}
+                    {{ seller.eMail }} {{ seller.website }}<br />
+                {% endif %}
             </td>
             <td style="width:20%">&nbsp;</td>
             <td style="width:40%; border:1 #000 solid">
                 <b>Nabywca</b><br/><br/>
-                {{ buyer.company }} <br />
-                {{ buyer.street }} {{ buyer.postCode }} {{ buyer.city }} <br />
-                {{ buyer.nip }} <br />
-                {{ buyer.phone }} <br />
-                {{ buyer.eMail }} {{ buyer.website }}
+                {% if buyer.company or buyer.firstname or buyer.lastname %}
+                    {{ buyer.company }} {{ buyer.firstname }} {{ buyer.lastname }}<br />
+                {% endif %}
+                {% if buyer.street or buyer.postCode or buyer.city %}
+                    {{ buyer.street }} {{ buyer.postCode }} {{ buyer.city }} <br />
+                {% elseif buyer.adress %}
+                    {{ buyer.adress }}<br />
+                {% endif %}
+                {% if buyer.nip %}
+                    {{ buyer.nip }} <br />
+                {% endif %}
+                {% if buyer.phone %}
+                    {{ buyer.phone }} <br />
+                {% endif %}
+                {% if buyer.eMail or buyer.website %}
+                    {{ buyer.eMail }} {{ buyer.website }}<br />
+                {% endif %}
             </td>
         </tr>
         <tr>
