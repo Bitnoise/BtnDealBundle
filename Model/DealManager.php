@@ -281,7 +281,7 @@ class DealManager extends Manager
      * @return void
      * @author
      **/
-    private function generateNumber()
+    protected function generateNumber()
     {
         $lastItem = $this->em
             ->createQuery("select i from BtnDealBundle:Deal i ORDER BY i.issueDate DESC, i.number DESC")
@@ -454,7 +454,7 @@ class DealManager extends Manager
      * @return string  (filename)
      * @author
      **/
-    private function getPdf($force = false)
+    protected function getPdf($force = false)
     {
         $filename = null;
 
